@@ -62,7 +62,7 @@ footer .listItem:not(:last-child) {
     border-bottom: 2px solid #111111;
 }
 nav .listItem:hover {
-    border-top: none;
+    border-top: 2px solid #000000;
     font-weight: bold;
 }
 footer .listItem:hover {
@@ -76,7 +76,6 @@ footer .listItem:hover {
     display: inline-block;
     width: 83%;
     height: auto;
-    /* border:1px solid blue; */
     margin-bottom: 5%;
 }
 h1 {
@@ -112,7 +111,6 @@ h1 {
     vertical-align: top;
 }
 .Art div {
-    /* border: 1px solid red; */
     height: auto;
     text-align: right;
     margin-bottom: 0.5%;
@@ -120,12 +118,13 @@ h1 {
 .Art div span {
     text-decoration: underline;
     text-align: right;
-    /* border:1px solid green; */
     padding-right: 1%;
 }
 .Art img {
-    width: 32px;
-    height: 32px;
+    width: max;
+}
+.artimg {
+    all: unset;
 }
 /* Art Styles */
 
@@ -227,7 +226,7 @@ form button {
     padding: 0.5%;
 }
 .Profile img {
-    max-width: 265px;
+    max-width: 300px;
     margin: 0 auto;
     display: block;
 }

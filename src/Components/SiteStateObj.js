@@ -22,8 +22,8 @@ class LoginCheck extends React.Component {
 			user = cookies.find((cookie) => {
 				return cookie.includes("user");
 			});
-			console.log("login",login)
-			console.log("user",user);
+			// console.log("login",login)
+			// console.log("user",user);
 			login = login.split("=")[1];
 			user = JSON.parse(user.split("=")[1]);
 		}

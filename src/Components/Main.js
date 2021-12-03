@@ -5,9 +5,8 @@ class Main extends React.Component {
 	render() {
 		return (
 			<main className="Main">
-				<h1>Main Page</h1>
-				<h1>Creations</h1>
-				<Gallery user="" />
+				<h1>Recent Creations</h1>
+				<Gallery user="" limit="20"/>
 			</main>
 		);
 	};

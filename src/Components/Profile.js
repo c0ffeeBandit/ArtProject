@@ -29,6 +29,25 @@ function logout() {
 }
 
 function Profile(props) {
+			// let cookies = document.cookie.split("; ");
+			// if (cookies.length > 1) {
+			// 	let login = cookies.find((cookie) => {
+			// 		return cookie.includes("x-auth-token");
+			// 	});
+			// 	let user = cookies.find((cookie) => {
+			// 		return cookie.includes("user");
+			// 	});
+			// 	// console.log("login", login);
+			// 	// console.log("user", user);
+			// 	login = login.split("=")[1];
+			// 	user = JSON.parse(user.split("=")[1]);
+			// 	// console.log("login", login);
+			// 	// console.log("user", user.username);
+			// 	if (user.username && login) {
+			// 		// logged in already, no login for you.
+			// 		window.location.href = "http://localhost:3000/";
+			// 	}
+			// }
 	return (
 		<main className="Profile">
 			<img src="./img/profile.png" alt="Profile" />
@@ -56,7 +75,7 @@ function Profile(props) {
 					}}>Logout</button>
 				</p>
 			</div>
-			<h2>Last 3 Gallery on your wall</h2>
+			<h2>Last 3 images you've shared:</h2>
 			<Gallery user={props.user} limit="3" />
 		</main>
 	);

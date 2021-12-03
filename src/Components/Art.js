@@ -1,17 +1,19 @@
 function Art( props ){
+    // console.log( "Art props", props );
+    // console.log( "Art props image?", props.image );
     return (
-        <div className="Art">
-            <img src="./img/lightdarklight.jpg" alt="art symbol" />
-            <p className="description">{props.description}</p>
-            <p> Artist? </p>
-            <p> What else goes here? Render art! </p>
-            <div>
-                <span>
-                    <small>Author: </small>
-                    {props.author}
-                </span>
-            </div>
-        </div>
-	);
+			<div className="Art">
+				<p>Description: {props.description}</p>
+				<p>Image name: {props.name} </p>
+				<p>CreatedAt: {props.createdAt}</p>{" "}
+				<img className="artimg" src={props.image} alt={props.name} />
+				<div>
+					<span>
+						<small>creator: </small>
+						{props.creator}
+					</span>
+				</div>
+			</div>
+		);
 };
 export default Art;

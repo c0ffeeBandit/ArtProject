@@ -11,13 +11,13 @@ const utils = require('../utils');
 
 module.exports = {
     get: ( req, res, next ) => {
-			console.log("user.get " ); // req.body,
+			// console.log("user.get " ); // req.body,
 			models.User.find()
-				.then((users) => {
-                    console.log( "user.get(got):", users );
-                    res.send(users);
-                })
-				.catch(next);
+            .then((users) => {
+                // console.log( "user.get(got):", users );
+                res.send( users );
+            })
+            .catch(next);
 		},
     post: {
         register: ( req, res, next ) => {

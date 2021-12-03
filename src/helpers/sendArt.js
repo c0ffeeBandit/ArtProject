@@ -12,6 +12,7 @@ function sendArt( item, activeUser ) {
 			let data = {
 				creator: user._id,
 				name: item.name,
+				description: item.description,
 				image: item.image,
 			};
 			// console.log(data);

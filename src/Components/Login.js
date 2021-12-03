@@ -24,15 +24,15 @@ class Login extends React.Component {
 		event.preventDefault();
 		loginHelper( this.state )
 		.then( ( data ) =>{
-			console.log("data:", data);
-			console.log("this.state:", this.state);
-			document.cookie = `x-auth-token=` + data.token; // JSON.stringify(data.token)
-			document.cookie = `user={"username":"${data.user.username}","id":"${data.user._id}"}`; // ","posts":${ data.user.posts.length }
-			// console.log(data.user.art); // TODO fix me
+			console.log( "this.state:", this.state );
+			console.log( "Login.loginHeler(this.state) -> data:", data );
+			document.cookie = `x-auth-token=` + data.token;
+			document.cookie = `user={"username":"${data.user.username}","id":"${data.user._id}","artCount":"${data.user.art.length}"}`; 
+			console.log( "data.user.art", data.user.art );
 			this.props.updateLogin({
 				loggedin: data.token,
 				username: data.user.username,
-				// posts: data.user.posts.length
+				artCount: data.user.art.length,
 				id: data.user._id,
 			});
 			return true;
@@ -55,8 +55,8 @@ class Login extends React.Component {
 			user = JSON.parse(user.split("=")[1]);
 			// console.log("login", login);
 			// console.log("user", user.username);
-			if (user.username && login) {
-				window.location.href = "http://localhost:3000/"; // logged in already, no login for you.
+			if ( user.username && login ){ // logged in already, no login for you.
+				window.location.href = "http://localhost:3000/";
 			}
 		}
 		return (
