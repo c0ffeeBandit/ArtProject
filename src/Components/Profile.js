@@ -57,10 +57,6 @@ function Profile(props) {
 					{props.username}
 				</p>
 				<p>
-					<span>Gallery: </span>
-					{props.numGallery}
-				</p>
-				<p>
 					<button onClick={() => {
 						logout().then(data=>{
 							console.log(data)

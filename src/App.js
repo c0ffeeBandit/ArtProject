@@ -1,4 +1,4 @@
-import "./App.css";
+// import "./App.css";
 import Main from "./Components/Main";
 import Create from "./Components/Create";
 import Register from "./Components/Register";
@@ -11,9 +11,9 @@ import { Routes } from "react-router-dom";
 
 function App( props ){
 	const loggedIn = props.user.loggedin;
-	const notLoggedIn = !props.user.loggedin;
+	// const notLoggedIn = !props.user.loggedin;
 	console.log( "Logged in ", loggedIn );
-	console.log( "Not Logged in ", notLoggedIn );
+	// console.log( "Not Logged in ", notLoggedIn );
 	console.log( "Props ", props );
 	return (
 		<div className="App Container">

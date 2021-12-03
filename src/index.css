@@ -92,42 +92,6 @@ h1 {
 }
 /* Gallery Styles */
 
-/* Art Styles */
-.Art {
-    width: 100%;
-    height: auto;
-    border: 1px solid #111111;
-    margin-bottom: 3%;
-    border-radius: 4px;
-}
-.description {
-    word-wrap: break-word;
-    padding: 0.5%;
-    font-style: italic;
-    border:1px solid blue;
-    margin-bottom: 0.5%;
-    width: 95%;
-    display: inline-block;
-    vertical-align: top;
-}
-.Art div {
-    height: auto;
-    text-align: right;
-    margin-bottom: 0.5%;
-}
-.Art div span {
-    text-decoration: underline;
-    text-align: right;
-    padding-right: 1%;
-}
-.Art img {
-    width: max;
-}
-.artimg {
-    all: unset;
-}
-/* Art Styles */
-
 /* Footer Styles */
 .Footer {
     width: 100%;

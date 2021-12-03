@@ -1,3 +1,4 @@
+import "./art.css";
 function Art( props ){
     // console.log( "Art props", props );
     // console.log( "Art props image?", props.image );
