@@ -17,6 +17,9 @@ const userSchema = new Schema(
 			type: String,
 			require: true,
 		},
+		image: {
+			type: String,
+		},
 		art: [{ type: ObjectId, ref: "Art" }],
 	},
 	{ timestamps: true }

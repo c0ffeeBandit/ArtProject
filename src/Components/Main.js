@@ -8,6 +8,7 @@ class Main extends React.Component {
 				<h1>Recent Creations</h1>
 				<Gallery user="" limit="20"/>
 			</main>
+			// <p> Main Bork </p>
 		);
 	};
 };

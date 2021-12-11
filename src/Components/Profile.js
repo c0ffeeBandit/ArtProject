@@ -1,4 +1,5 @@
 import Gallery from "./Gallery";
+import getProfileImg from "../helpers/getProfileImg";
 
 function logout() {
 	let cookies = document.cookie.split("; ");
@@ -28,51 +29,48 @@ function logout() {
 	});
 }
 
-function Profile(props) {
-			// let cookies = document.cookie.split("; ");
-			// if (cookies.length > 1) {
-			// 	let login = cookies.find((cookie) => {
-			// 		return cookie.includes("x-auth-token");
-			// 	});
-			// 	let user = cookies.find((cookie) => {
-			// 		return cookie.includes("user");
-			// 	});
-			// 	// console.log("login", login);
-			// 	// console.log("user", user);
-			// 	login = login.split("=")[1];
-			// 	user = JSON.parse(user.split("=")[1]);
-			// 	// console.log("login", login);
-			// 	// console.log("user", user.username);
-			// 	if (user.username && login) {
-			// 		// logged in already, no login for you.
-			// 		window.location.href = "http://localhost:3000/";
-			// 	}
-			// }
+function Profile( props ) {
+	// console.log( "Profile says props ", props, props.user.id );
+	let image = "";
+	// image = await getProfileImg( props.user.id );
+	// .then( data => {
+	// 	// console.log( data );
+	// 	image = data;
+	// 	return data;
+	// });
+	// console.log("Profile found a profile image of", image);
+	if (!image) {
+		image = "./img/profile.png";
+	}
 	return (
 		<main className="Profile">
-			<img src="./img/profile.png" alt="Profile" />
+			<img src={image} alt="ProfilePicture" />
 			<div className="personal-info">
 				<p>
 					<span>Username: </span>
 					{props.username}
 				</p>
 				<p>
-					<button onClick={() => {
-						logout().then(data=>{
-							console.log(data)
-							document.cookie = `x-auth-token=`;
-							document.cookie = `user={"username":"","gallery":0}`
-							props.updateLogin({
-								loggedin: false,
-								username: "",
-								gallery:0
-							})
-						})
-					}}>Logout</button>
+					<button
+						onClick={() => {
+							logout().then((data) => {
+								console.log(data);
+								document.cookie = `x-auth-token=`;
+								document.cookie = `user={"username":"","artCount":0}`;
+								props.updateLogin({
+									loggedin: false,
+									username: "",
+									artCount: 0,
+								});
+							});
+						}}
+					>
+						Logout
+					</button>
 				</p>
 			</div>
-			<h2>Last 3 images you've shared:</h2>
-			<Gallery user={props.user} limit="3" />
+			<h2>Last images you've shared:</h2>
+			<Gallery user="" limit="3" />
 		</main>
 	);
 }

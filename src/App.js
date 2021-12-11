@@ -1,11 +1,10 @@
-// import "./App.css";
 import Main from "./Components/Main";
 import Create from "./Components/Create";
 import Register from "./Components/Register";
 import Login from "./Components/Login";
 import Profile from "./Components/Profile";
 import Error from "./Components/Four0Four";
-// import PrivateRoute from "./Components/PrivateRoute";
+import PrivateRoute from "./Components/PrivateRoute";
 import { Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
 
@@ -22,9 +21,9 @@ function App( props ){
 				<Route
 					path="/create"
 					element={
-						// <PrivateRoute isAuth={loggedIn} path="create" redirectTo="/login">
+						<PrivateRoute isAuth={loggedIn} path="create" redirectTo="/login">
 							<Create user={props.user} addArt={props.addArt} />
-						// </PrivateRoute>
+						</PrivateRoute>
 					}
 				/>
 				<Route path="/register" element={<Register />} />
@@ -34,13 +33,13 @@ function App( props ){
 				<Route
 					path="/profile"
 					element={
-						// <PrivateRoute isAuth={loggedIn} path="profile" redirectTo="/login">
+						<PrivateRoute isAuth={loggedIn} path="profile" redirectTo="/login">
 							<Profile
 								updateLogin={props.updateLogin}
 								user={props.user}
 								username={props.user.username}
 							/>
-						// </PrivateRoute> // FOR PROFILE Component numGallery={props.user.posts}
+					  </PrivateRoute> // FOR PROFILE Component numGallery={props.user.posts}
 					}
 				/>
 				<Route path="*" element={<Error path={props.path} />} />

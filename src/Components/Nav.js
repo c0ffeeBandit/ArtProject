@@ -30,6 +30,7 @@ class Nav extends React.Component {
 						})}
 				</ul>
 			</nav>
+			// <p> nav bork </p>
 		);
 	};
 };

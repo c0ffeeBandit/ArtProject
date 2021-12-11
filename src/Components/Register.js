@@ -24,11 +24,13 @@ function Register(props) {
 				return false;
 			});
 	}
-	function registerUser(username, password) {
+	function registerUser(username, password, image) {
+		console.log("registerUser says", username, password );
 		const url = "http://localhost:9000/api/user/register";
 		let data = JSON.stringify({
 			username,
 			password,
+			image,
 		});
 		let resources = {
 			method: "POST",
@@ -43,6 +45,7 @@ function Register(props) {
 
 	const submitHandler = (event) => {
 		event.preventDefault();
+		let image = "";
 		if (password !== repass) {
 			setError("Both Passwords must be the same!");
 			return;
@@ -54,10 +57,24 @@ function Register(props) {
 				setError("Username already exists, try again or go to login.");
 				return;
 			}
-			registerUser(username, password)
-			.then((res) => {
-					navigate("/login");
-			});
+			let files = document.getElementById("image").files;
+			var reader = new FileReader();
+			if ( files.length > 0 ){
+				reader.readAsDataURL(files[0]);
+				reader.onload = function () {
+					image = reader.result;
+					// console.log("Register Image data:", image);
+					registerUser(username, password, image).then((res) => {
+						navigate("/login");
+						return;
+					});
+				};
+			}else{ // no image
+				registerUser( username, password )
+				.then((res) => {
+						navigate("/login");
+				});
+			}
 		});
 	};
 	return (
@@ -97,6 +114,16 @@ function Register(props) {
 						}}
 					/>
 					<div>{error}</div>
+				</div>
+				<div className="form-control">
+					<label htmlFor="image">Profile picture:</label>
+					<br />
+					<input
+						type="file"
+						id="image"
+						name="image"
+						// accept="image/png, image/PNG, image/jpeg"
+					/>
 				</div>
 				<div className="form-control">
 					<button type="submit">Register</button>

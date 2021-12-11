@@ -7,7 +7,8 @@ class Login extends React.Component {
 		super( props );
 		this.state = {
 			username:'',
-			password:''
+			password:'',
+			image:'',
 		};
 		this.changeHandler = this.changeHandler.bind(this);
 		this.submitHandler = this.submitHandler.bind(this);
@@ -27,12 +28,13 @@ class Login extends React.Component {
 			console.log( "this.state:", this.state );
 			console.log( "Login.loginHeler(this.state) -> data:", data );
 			document.cookie = `x-auth-token=` + data.token;
-			document.cookie = `user={"username":"${data.user.username}","id":"${data.user._id}","artCount":"${data.user.art.length}"}`; 
-			console.log( "data.user.art", data.user.art );
+			document.cookie = `user={"username":"${data.user.username}","id":"${data.user._id}","artCount":"${data.user.art.length}"}`;
+			console.log( "data.user.image", data.user.image );
 			this.props.updateLogin({
 				loggedin: data.token,
 				username: data.user.username,
 				artCount: data.user.art.length,
+				image: data.user.image,
 				id: data.user._id,
 			});
 			return true;
@@ -52,10 +54,11 @@ class Login extends React.Component {
 			// console.log("login", login);
 			// console.log("user", user);
 			login = login.split("=")[1];
-			user = JSON.parse(user.split("=")[1]);
+			console.log( "login render has user as", user );
+			// user = JSON.parse(user.split("=")[1]);
 			// console.log("login", login);
 			// console.log("user", user.username);
-			if ( user.username && login ){ // logged in already, no login for you.
+			if ( user.username !== "" && login ){ // logged in already, no login for you.
 				window.location.href = "http://localhost:3000/";
 			}
 		}
@@ -84,9 +87,10 @@ class Login extends React.Component {
 					<div className="form-control">
 						<button type="submit">Login</button>
 					</div>
-					<p>
+					<br/>
+					<div>
 						Not already a user? <Link to="/register">Register here.</Link>
-					</p>
+					</div>
 				</form>
 			</main>
 		);

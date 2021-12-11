@@ -6,6 +6,7 @@ const utils = require('../utils');
 //     "_id": "61a7eb8de0fba553d05d636c",
 //     "username": "test",
 //     "password": "$2b$11$GBVixBH9uMedHpA7tZ.mm.5bB7fYpukxHk4xI4XqbxIxGABuZv0wO",
+//     "image": ""
 //     "__v": 0
 // }
 
@@ -21,8 +22,8 @@ module.exports = {
 		},
     post: {
         register: ( req, res, next ) => {
-            console.log( "user.post.register ", req.body );
-            const { username, password } = req.body;
+            console.log( "user.post.register <body snipped>"); //, req.body );
+            const { username, password, image } = req.body;
             // TODO: validate better
             if( !username ){
                 console.log( "user.post.register No username provided" );
@@ -32,12 +33,12 @@ module.exports = {
         		}
                 return false;
             }
-            models.User.create({ username, password })
+            models.User.create({ username, password, image })
             .then( ( createdUser ) => res.send( createdUser ) )
             .catch( next );
         },
         login: ( req, res, next ) => {
-            console.log("user.post.login ", req.body );
+            console.log("user.post.login <body snipped>");//, req.body );
             const { username, password } = req.body;
             models.User.findOne({ username })
             .then((user) => Promise.all([ user, user.matchPassword( password )] ) )
@@ -71,8 +72,8 @@ module.exports = {
     put: ( req, res, next ) => {
         console.log( "user.put ", req.body );
         const id = req.params.id;
-        const { username, password } = req.body;
-        models.User.update({ _id: id }, { username, password })
+        const { username, password, image } = req.body;
+        models.User.update({ _id: id }, { username, password, image })
         .then(( updatedUser ) => res.send( updatedUser ))
         .catch( next );
     },

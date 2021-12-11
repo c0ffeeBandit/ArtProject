@@ -5,7 +5,11 @@ module.exports = {
         // console.log("art.get Getting Creations", req.body );
         models.Art.find()
         .then((arts) => {
-            console.log("art.get(got)", arts );
+            // console.log("art.get(got)", arts );
+            console.log( "\n");
+            for ( const entry of arts){
+                console.log(`{ ${entry._id}, ${entry.creator}, ${entry.name}, ${entry.description}, ${entry.createdAt}, ${entry.updatedAt} }\n` );
+            }
             res.send(arts);
         })
         .catch(next);

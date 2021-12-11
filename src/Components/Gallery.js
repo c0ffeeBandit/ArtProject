@@ -19,8 +19,8 @@ class Gallery extends React.Component { // Art items limited from the getArt hel
 	};
 	componentDidMount(){ // wait till component exists on the page, then fill it
 		// console.log( this.props.user );
-		getArt( this.props.limit, this.props.user.username )
-		// getArt( this.props.limit, "" )
+		// getArt( this.props.limit, this.props.user.username )
+		getArt( this.props.limit, "" ) // username to filter out .. none, all users
 		.then( ( data ) => {
 			// console.log( "Gallery.getArt( data )", data );
 			this.addArt( data );
@@ -30,24 +30,34 @@ class Gallery extends React.Component { // Art items limited from the getArt hel
 		// console.log( links );
 		// console.log( this.props.user );
 		let gallery = this.state.art;
-		// console.log( gallery );
-		return (
-			<div className="Gallery">
-				{ gallery.map( ( art ) =>{
-					// console.log( art.image );
-						return (
-							<Art
-								key={art._id}
-								description={art.description}
-								creator={art.creator}
-								image={art.image}
-								name={art.name}
-								createdAt={art.createdAt}
-							/>
-						);
-        })}
-			</div>
-		);
+		console.log( gallery );
+		if( gallery ){
+			return (
+				<div className="Gallery">
+					{ gallery.map( ( art ) =>{
+						// console.log( art );
+							return (
+								<Art
+									key={art._id}
+									description={art.description}
+									creator={art.creator}
+									image={art.image}
+									name={art.name}
+									createdAt={art.createdAt}
+								/>
+							);
+						}) // close anon function, close gallery.map 
+					}
+				</div>
+			);
+		}else{ // !gallery
+			return (
+				<div className="Gallery">
+					<p>We are sorry, no art found for user.</p>
+					<p>We encourage you to tell them to create some.</p>
+				</div>
+			);
+		}
 	};
 };
 export default Gallery;
